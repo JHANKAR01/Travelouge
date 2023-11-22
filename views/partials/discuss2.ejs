@@ -1,0 +1,18 @@
+
+        <div class="form-group">
+            <label for="searchDropdown">Sort by Places:</label>
+            <div class="dropdown">
+                <input type="text" class="form-control" id="searchDropdown" name="searchCity" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="Sort by places" required>
+                <div class="dropdown-menu" aria-labelledby="searchDropdown">
+                  <% places.forEach(e => { %>
+                    <div class="dropdown-item option" data-value="option1"><%= e.place %></div>
+                  <% }); %>
+                    <!-- <div class="dropdown-item option" data-value="option1">Bhopal</div>
+                    <div class="dropdown-item option" data-value="option2">Indore</div>
+                    <div class="dropdown-item option" data-value="option3">Mandla</div>
+                    <div class="dropdown-item option" data-value="option4">Kanpur</div>
+                    <div class="dropdown-item option" data-value="option5">Balaghat</div> -->
+                </div>
+            </div>
+            <input type="hidden" id="selectedValue" name="selectedValue">
+        </div>

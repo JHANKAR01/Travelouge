@@ -1,0 +1,103 @@
+/* Reset some default styles */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+/* Hero Section Styles */
+.hero {
+    background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.imf.org%2Fen%2FNews%2FArticles%2F2021%2F02%2F24%2Fna022521-how-to-save-travel-and-tourism-in-a-post-pandemic-world&psig=AOvVaw3oUMw-plMnVbjcwBTS5ejD&ust=1694799093215000&source=images&cd=vfe&opi=89978449&ved=0CBAQjRxqFwoTCLi7oeHQqoEDFQAAAAAdAAAAABAE'); /* Replace with your own image */
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    padding: 150px 0;
+}
+
+.hero-content h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.hero-content p {
+    font-size: 24px;
+    margin-bottom: 40px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px 30px;
+    font-size: 20px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Featured Destinations Styles */
+.featured-destinations {
+    background-color: #fff;
+    padding: 40px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.featured-destinations h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Destination Cards */
+.destination-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    margin: 20px;
+    max-width: 300px;
+    transition: transform 0.3s ease;
+}
+
+.destination-card:hover {
+    transform: translateY(-10px);
+}
+
+.destination-card img {
+    width: 100%;
+    height: auto;
+}
+
+.destination-card-content {
+    padding: 20px;
+}
+
+.destination-card h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.destination-card p {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+}

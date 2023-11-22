@@ -1,0 +1,89 @@
+<!-- views/pnr.ejs -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>PNR Status</title>
+</head>
+<body>
+    <h1>PNR Status</h1>
+    <p>PNR: <%= pnrStatus.data.Pnr %></p>
+    <p>Train Name: <%= pnrStatus.data.TrainName %></p>
+    <p>TrainNo: <%= pnrStatus.data.TrainNo %></p>
+    <p>TrainName: <%= pnrStatus.data.TrainName %></p>
+    <p>Doj: <%= pnrStatus.data.Doj %></p>
+    <p>BookingDate: <%= pnrStatus.data.BookingDate %></p>
+    <p>Quota: <%= pnrStatus.data.Quota %></p>
+    <p>DestinationDoj: <%= pnrStatus.data.DestinationDoj %></p>
+    <p>SourceDoj:  <%= pnrStatus.data.SourceDoj %></p>
+    <p>From:  <%= pnrStatus.data.From %></p>
+    <p>To:  <%= pnrStatus.data.To %></p>
+    <p>ReservationUpto:  <%= pnrStatus.data.ReservationUpto %></p>
+    <p>BoardingPoint: <%= pnrStatus.data.BoardingPoint %></p>
+    <p>Class:  <%= pnrStatus.data.Class %></p>
+    <p>ChartPrepared:  <%= pnrStatus.data.ChartPrepared %></p>
+    <p>BoardingStationName:  <%= pnrStatus.data.BoardingStationName %></p>
+    <p>TrainStatus:    <%= pnrStatus.data.TrainStatus %></p>
+    <p>TrainCancelledFlag:    <%= pnrStatus.data.TrainCancelledFlag %></p>
+    <p>ReservationUptoName:    <%= pnrStatus.data.ReservationUptoName %></p>
+    <p>PassengerCount:    <%= pnrStatus.data.PassengerCount %></p>
+
+    <h2>Passeneger Status</h2>
+
+    <ul>
+        <% pnrStatus.data.PassengerStatus.forEach((passenger)=>{ %>
+            <li>
+                <strong>Passenger Number:</strong> <%= passenger.Number %><br>
+                <strong>ReferenceId:</strong> <%= passenger.ReferenceId %><br>
+                <strong>Pnr:</strong> <%= passenger.Pnr %><br>
+                <strong>Number:</strong> <%= passenger.Number %><br>
+                <strong>Prediction:</strong> <%= passenger.Prediction %><br>
+                <strong>PredictionPercentage:</strong> <%= passenger.PredictionPercentage %><br>
+                <strong>ConfirmTktStatus:</strong> <%= passenger.ConfirmTktStatus %><br>
+                <strong>Coach:</strong> <%= passenger.Coach %><br>
+                <strong>Berth:</strong> <%= passenger.Berth %><br>
+                <strong>BookingStatus:</strong> <%= passenger.BookingStatus %><br>
+                <strong>CurrentStatus:</strong> <%= passenger.CurrentStatus %><br>
+                <strong>CoachPosition:</strong> <%= passenger.CoachPosition %><br>
+                <strong>BookingBerthNo:</strong> <%= passenger.BookingBerthNo %><br>
+                <strong>BookingCoachId:</strong> <%= passenger.BookingCoachId %><br>
+                <strong>BookingStatusNew:</strong> <%= passenger.BookingStatusNew %><br>
+                <strong>BookingStatusIndex:</strong> <%= passenger.BookingStatusIndex %><br>
+                <strong>CurrentBerthNo:</strong> <%= passenger.CurrentBerthNo %><br>
+                <strong>CurrentCoachId:</strong> <%= passenger.CurrentCoachId %><br>
+                <strong>BookingBerthCode:</strong> <%= passenger.BookingBerthCode %><br>
+                <strong>CurrentBerthCode:</strong> <%= passenger.CurrentBerthCode %><br>
+                <strong>CurrentStatusNew:</strong> <%= passenger.CurrentStatusNew %><br>
+                <strong>CurrentStatusIndex:</strong> <%= passenger.CurrentStatusIndex %><br>
+            </li>
+        <% }); %>
+    </ul>
+
+    <!-- <p>PassengerStatus:<%= pnrStatus.data.PassengerStatus %></p> -->
+
+    <p>DepartureTime:<%= pnrStatus.data.DepartureTime %></p>
+    <p>ArrivalTime:<%= pnrStatus.data.ArrivalTime %></p>
+    <p>ExpectedPlatformNo:<%= pnrStatus.data.ExpectedPlatformNo %></p>
+    <p>BookingFare:<%= pnrStatus.data.BookingFare %></p>
+    <p>TicketFare:<%= pnrStatus.data.TicketFare %></p>
+    <p>CoachPosition:<%= pnrStatus.data.CoachPosition %></p>
+    <p>Rating:<%= pnrStatus.data.Rating %></p>
+    <p>FoodRating:<%= pnrStatus.data.FoodRating %></p>
+    <p>PunctualityRating:<%= pnrStatus.data.PunctualityRating %></p>
+    <p>CleanlinessRating:<%= pnrStatus.data.CleanlinessRating %></p>
+    <p>SourceName:<%= pnrStatus.data.SourceName %></p>
+    <p>DestinationName:<%= pnrStatus.data.DestinationName %></p>
+    <p>Duration:<%= pnrStatus.data.Duration %></p>
+    <p>RatingCount:<%= pnrStatus.data.RatingCount %></p>
+    <p>HasPantry:<%= pnrStatus.data.HasPantry %></p>
+    <p>GroupingId:<%= pnrStatus.data.GroupingId %></p>
+    <p>OptVikalp:<%= pnrStatus.data.OptVikalp %></p>
+    <p>VikalpData:<%= pnrStatus.data.VikalpData %></p>
+    <p>VikalpTransferred:<%= pnrStatus.data.VikalpTransferred %></p>
+    <p>VikalpTransferredMessage:<%= pnrStatus.data.VikalpTransferredMessage %></p>
+    <p>FlightBannerUrl:<%= pnrStatus.data.FlightBannerUrl %></p>
+
+    <img src="<%= pnrStatus.data.FlightBannerUrl %>" alt="loading">
+    <!-- Add more fields as needed -->
+</body>
+</html>

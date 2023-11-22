@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Forum</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .serila{
+      width:20vw;
+
+    }
+    .serila1{
+      width:60vw;
+    }
+    textarea{
+      margin-bottom: 2rem;
+    }
+    hr{
+      margin-bottom: 1rem;
+    }
+  </style>
+
+<style>
+  /* Add some basic CSS for styling the dropdown */
+  .dropdown {
+      position: relative;
+      display: inline-block;
+  }
+
+  .search-box {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      width: 200px;
+  }
+
+  .dropdown-content {
+      display: none;
+      position: absolute;
+      background-color: #f9f9f9;
+      min-width: 100%;
+      overflow: auto;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+  }
+
+  .option {
+      padding: 10px;
+      cursor: pointer;
+  }
+
+  .option:hover {
+      background-color: #ccc;
+  }
+  .filter{
+    display:flex;
+  }
+
+  #small{
+    width:50px;
+    text-align: center;
+    justify-content: center;
+  } 
+  </style>
+</head>
+<body>
+
+  <h1>Chat with the Community</h1>
+
+
+  <!-- for filtering by city -->
+  <div class="filter">
+    <form action="/search" method="GET">
+      <div class="form-group">
+          <label for="searchDropdown">Sort by Places:</label>
+          <div class="dropdown">
+                  <input type="text" class="form-control" id="searchDropdown" name="searchCity" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="Sort by places" required>
+                  <div class="dropdown-menu" aria-labelledby="searchDropdown">
+      
+                    <!-- Dynamically generate the places here -->
+                    <% places.forEach(e => { %>
+                      <div class="dropdown-item option" data-value="option1"><%= e.place %></div>
+                    <% }); %>
+                  </div>
+                </div>
+              <input type="hidden" id="selectedValue" name="selectedValue">
+          </div>
+
+      <button type="submit" id="small">Go</button>
+    </form>
+  </div>
+  <hr>
+  <ul>
+    <% messages.forEach(message => { %>
+      <% if(message.user==user){ %>
+        <li><strong>You:</strong> <%= message.message %> (City: <%= message.city %>)</li>
+      <% } %>
+      <% if(message.user!=user){ %>
+        <li><strong><%= message.user %>:</strong> <%= message.message %> (City: <%= message.city %>)</li>
+      <% } %>
+    <% }); %>
+      </ul>
+      
+      
+      <div class="serila1">
+        <form action="/add-message" method="POST">
+          
+          <div class="dropdown">
+            <input type="text" class="search-box" name="city" placeholder="Search options" id="myInput" oninput="filterOptions()">
+            <div class="dropdown-content" id="myDropdown">
+
+              <!-- Dynamically generate the places here -->
+              <% places.forEach(e => { %>
+                <div class="option" data-value="<%= e.place %>"><%= e.place %></div>
+              <% }); %>
+            </div>
+        </div>
+        <!-- <input type="text" name="city" placeholder="Your city" required> -->
+        <textarea rows="4" name="message" placeholder="Type your message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <hr>
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+        // JavaScript for the searchable dropdown
+        $('.dropdown-menu div.option').on('click', function(e) {
+          e.preventDefault();
+          var selectedValue = $(this).data('value');
+            $('#searchDropdown').val($(this).text());
+            $('#selectedValue').val(selectedValue);
+        });
+        </script>
+    <script>
+      // JavaScript for the searchable dropdown
+      function filterOptions() {
+        var input, filter, dropdown, options, option, i;
+          input = document.getElementById("myInput");
+          filter = input.value.toLowerCase();
+          dropdown = document.getElementById("myDropdown");
+          options = dropdown.getElementsByClassName("option");
+          
+          for (i = 0; i < options.length; i++) {
+            option = options[i];
+            if (option.innerText.toLowerCase().indexOf(filter) > -1) {
+              option.style.display = "";
+                } else {
+                  option.style.display = "none";
+                }
+              }
+              dropdown.style.display = "block";
+            }
+
+            // Handle option selection
+            var options = document.querySelectorAll(".option");
+            for (var i = 0; i < options.length; i++) {
+              options[i].addEventListener("click", function() {
+                var selectedValue = this.getAttribute("data-value");
+                document.getElementById("myInput").value = selectedValue;
+                document.getElementById("myDropdown").style.display = "none";
+          });
+        }
+  </script>
+</body>
+</html>
+
+
+<!-- <label for="dropdown">Sort by Places:</label>
+  <select id="dropdown" name="searchCity" required>
+    Dynamically generate the places here
+      <% places.forEach(e => { %>
+          <option value="option1"> <%= e.place %> </option>
+      <% }); %>
+  </select> -->
+
+
+
+
+
+
+
+        <!-- <div class="form-group">
+          <label for="searchDropdown">Sort by Places:</label>
+          <div class="dropdown">
+                  <input type="text" class="form-control" id="searchDropdown" name="searchCity" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" placeholder="Sort by places" required>
+                  <div class="dropdown-menu" aria-labelledby="searchDropdown">
+      
+                    Dynamically generate the places here
+                    <% places.forEach(e => { %>
+                      <div class="dropdown-item option" data-value="option1"><%= e.place %></div>
+                    <% }); %>
+                  </div>
+                </div>
+              <input type="hidden" id="selectedValue" name="selectedValue">
+          </div> -->

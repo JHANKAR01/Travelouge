@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="./../styles.css"> -->
+    <title>Indore Shehar</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://apis.mappls.com/advancedmaps/api/<%= token2 %>/map_sdk?layer=vector&v=3.0&callback=initMap1"defer async></script>
+    <script src="https://apis.mappls.com/advancedmaps/api/<%= token2 %>/map_sdk_plugins?v=3.0"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            /* overflow: hidden; */
+        }
+
+        #map {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 60vh;
+        }
+
+        #auto {
+            width: 300px;
+            position: absolute;
+            z-index: 999;
+            font-size: 15px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            outline: none !important;
+            top: 360px;
+            border-radius: 10px;
+            margin: 4px;
+        }
+
+        .divb {
+            margin-top: 5%;
+        }
+
+        .card-container,
+        .card-container2 {
+            display: flex;
+            /* min-height: 400px; */
+            height: fit-content;
+            flex-direction: row;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            /* Enable smooth scrolling on iOS devices */
+            width: 100%;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+            /* Enable smooth scrolling */
+        }
+
+        .card {
+            flex: 0 0 auto;
+            flex-direction: column;
+            height: fit-content;
+            width: 300px;
+            height: fit-content;
+            background-color: #f0f0f0;
+            margin-right: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            scroll-snap-align: start;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .menu {
+            margin: 20px;
+        }
+
+        .menu h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        /* Existing CSS styles remain the same */
+
+
+
+        .card img {
+            max-width: 100%;
+            height: 30vh;
+            margin-bottom: 10px;
+
+        }
+
+        .card h3 {
+            font-size: 20px;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin-bottom: 10px;
+        }
+
+        .card .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .card .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar bg-dark border-bottom border-body"
+        data-bs-theme="dark">
+        <div class="container-fluid">
+            <a class="navbar-brand mb-0 h1" href="/">Travelogue</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="get_started">Plan a Trip</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">MyTrips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="hotels">Hotels</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tickets">Tickets</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="forum">Forum</a>
+                      </li>
+                </ul>
+
+
+            </div>
+            <ul class="nav justify-content-end">
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">LogOut</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="map"></div>
+    <input type="text" id="auto" name="auto" class="search-outer form-control as-input"
+        placeholder="Search places or eLoc's..." required="" spellcheck="false">
+
+
+    <div class="divb">
+        <div class="menu" id="destinations-menu">
+            <h2>Places to Visit in Indore :</h2>
+            <div class="card-container">
+                <div class="card ">
+                    <img class="" src="./c21.jpg" alt="Destination 1">
+                    <h3>C-21</h3>
+                    <p>The Upper lake is very well known Suicide point</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <!-- Add more destination cards here -->
+                <div class="card">
+                    <img src="./<%= city %>1.jpg" alt="Destination 1">
+                    <h3>Chappan</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <div class="card">
+                    <img src="./citadel.jpg" alt="Destination 1">
+                    <h3>Phoenix Citadel Mall</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <div class="card">
+                    <img src="./madirindore.jpg" alt="Destination 1">
+                    <h3>Mandir In Indore</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+
+                <div class="card">
+                    <img src="./d3.jpg" alt="Destination 1">
+                    <h3>Jama Masjid</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+
+                <div class="card">
+                    <img src="./restaurant.jpg" alt="Destination 1">
+                    <h3>Boat Club</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="menu" id=" restaurant">
+            <h2>Restaurants</h2>
+            <div class="card-container2">
+                <div class="card">
+                    <img src="./restaurant.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <!-- Add more destination cards here -->
+                <div class="card">
+                    <img src="./restaurant.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <div class="card">
+                    <img src="./r2.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+                <div class="card">
+                    <img src="./r3.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+
+                <div class="card">
+                    <img src="./restaurant.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+
+                <div class="card">
+                    <img src="./r2.jpg" alt="Destination 1">
+                    <h3>Destination 1</h3>
+                    <p>A beautiful place to visit and explore.</p>
+                    <a href="#" class="btn">View More</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2023 Trip Planner</p>
+    </footer>
+
+
+    <script>
+         var map,marker;
+          /*Map Initialization*/
+          function initMap1(){
+            map = new mappls.Map('map', { center: [<%= latitude %>, <%= longitude %>] });
+              map.addListener('load',function(){
+                  var optional_config = {
+                      /* location:[28.61, 77.23] */
+                      region: "IND",
+                      height:300,
+                  };
+                  new mappls.search(document.getElementById("auto"), optional_config, callback);
+
+                  /*CALL for fix text - LIKE THIS*/
+                //   new mappls.search("<%- city %>",placeOptions,callback);
+                  /*Search plugin initialization*/
+                // var placeOptions=
+                // {
+                //     location:[28.61, 77.23],
+                //     geolocation:true,
+                //     zoom:0,
+                //     pod:'City',
+                //     bridge:true,
+                //     tokenizeAddress:true,
+                //     filter:'cop:9QGXAM',
+                //     hyperLocal:true,
+                //     distance:true,
+                //     width:300,
+                //     height:300,
+                //     clearButton:false, //to hide cross button, which is right side of search input
+                //     blank_callback:function(){console.log("called when click on cross button or input value become blank");}
+                    
+                // };
+                  function callback(data) {
+                      console.log(data);
+                      if (data) {
+                          var dt = data[0];
+                          if (!dt) return false;
+                          var eloc = dt.eLoc;
+                          var place = dt.placeName + ", " + dt.placeAddress;
+                          /*Use elocMarker Plugin to add marker*/
+                          if (marker) marker.remove();
+                          mappls.pinMarker({
+                              map: map,
+                              pin: eloc,
+                              popupHtml: place,
+                              popupOptions: {
+                                  openPopup: true
+                              }
+                          }, function(data){
+                              marker=data;
+                              marker.fitbounds();
+                          })
+                      }
+                  }
+              });
+          }
+
+        // for scrolling through places
+        const container = document.querySelector(".card-container");
+
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        container.addEventListener("mousedown", (e) => {
+            isDown = true;
+            startX = e.pageX - container.offsetLeft;
+            scrollLeft = container.scrollLeft;
+        });
+
+        container.addEventListener("mouseleave", () => {
+            isDown = false;
+        });
+
+        container.addEventListener("mouseup", () => {
+            isDown = false;
+        });
+
+        container.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - container.offsetLeft;
+            const walk = (x - startX) * 2; // Adjust the multiplier for faster/slower scrolling
+            container.scrollLeft = scrollLeft - walk;
+        });
+
+        const container2 = document.querySelector(".card-container2");
+
+        let isDown1 = false;
+        let startX1;
+        let scrollLeft3;
+
+        container2.addEventListener("mousedown", (e) => {
+            // console.log("heere")
+            isDown1 = true;
+            startX1 = e.pageX - container2.offsetLeft;
+            scrollLeft3 = container2.scrollLeft;
+        });
+
+        container2.addEventListener("mouseleave", () => {
+            isDown1 = false;
+        });
+
+        container2.addEventListener("mouseup", () => {
+            isDown1 = false;
+        });
+
+        container2.addEventListener("mousemove", (e) => {
+            if (!isDown1) return;
+            e.preventDefault();
+            const x = e.pageX - container2.offsetLeft;
+            const walk = (x - startX1) * 2; // Adjust the multiplier for faster/slower scrolling
+            container2.scrollLeft = scrollLeft3 - walk;
+        });
+
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

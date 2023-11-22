@@ -1,0 +1,278 @@
+<html>
+  <head>
+    <title>HomePage</title>
+     
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+      .navbar-nav > li{
+        margin-left:30px;
+        margin-right:30px;
+      }
+      body, h1, h2, p {
+          margin: 0;
+          padding: 0;
+      }
+
+      /* Global Styles */
+      body {
+          font-family: Arial, sans-serif;
+          background-color: #f0f0f0;
+      }
+
+      /* Hero Section Styles */
+      .hero {
+          background-image: url('<%= imageFileName %>'); /* Replace with your own image */
+          background-size: cover;
+          color: #fff;
+          text-align: center;
+          padding: 150px 0;
+      }
+
+      .hero-content h1 {
+          font-size: 48px;
+          margin-bottom: 20px;
+          font-weight: bold;
+      }
+
+      .hero-content p {
+          font-size: 24px;
+          margin-bottom: 40px;
+      }
+
+      .btn-primary {
+          background-color: #007bff;
+          color: #fff;
+          padding: 15px 30px;
+          font-size: 20px;
+          text-decoration: none;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+      }
+
+      .btn-primary:hover {
+          background-color: #0056b3;
+      }
+
+      /* Featured Destinations Styles */
+      .featured-destinations {
+          background-color: #fff;
+          padding: 40px 0;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .featured-destinations h2 {
+          font-size: 36px;
+          margin-bottom: 30px;
+          font-weight: bold;
+          text-align:left;
+          margin-left: 20px;
+          border-left:20px solid red;
+      }
+
+      /* Destination Cards */
+      .destination-card {
+          background-color: #fff;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          overflow: hidden;
+          margin: 20px;
+          max-width: 300px;
+          transition: transform 0.3s ease;
+      }
+
+      .destination-card:hover {
+          transform: translateY(-10px);
+      }
+
+      .destination-card img {
+          width: 100%;
+          height: auto;
+      }
+
+      .destination-card-content {
+          padding: 20px;
+      }
+
+      .destination-card h3 {
+          font-size: 24px;
+          margin-bottom: 10px;
+      }
+
+      .destination-card p {
+          font-size: 16px;
+          color: #777;
+      }
+
+      /* Footer Styles */
+      footer {
+          background-color: #333;
+          color: #fff;
+          text-align: center;
+          padding: 20px 0;
+      }
+    </style>
+  </head>
+      
+    <body>
+        
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" class="navbar bg-dark border-bottom border-body" data-bs-theme="dark">
+            <div class="container-fluid">
+              <a class="navbar-brand mb-0 h1" href="/">Travelogue</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="get_started">Plan a Trip</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="profile">MyTrips</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="hotels">Hotels</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="tickets">Tickets</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="forum">Forum</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="ltc">LTC</a>
+                  </li>
+                </ul>
+
+                
+              </div>
+              <ul class="nav justify-content-end">
+
+                <% if (check==0) { %>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/register">Sign Up</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/login">Login In</a>
+                  </li>
+                <%} else { %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/logout">LogOut</a>
+                  </li>
+                <% } %>
+            </ul>
+            </div>
+          </nav>
+
+          <section class="hero">
+            <div class="hero-content">
+                <h1>Plan Your Dream Trip</h1>
+                <p>Discover amazing destinations and create unforgettable memories.</p>
+                <a href="get_started" class="btn-primary">Get Started</a>
+            </div>
+        </section>
+        <style>
+          body {
+    margin: 0;
+  }
+  
+  .slider {
+    overflow: hidden;
+    width: 80vw;
+    height: 80vh;
+    position: relative;
+    margin-left: 9%;
+    margin-top: 0%;
+  }
+  
+  .slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    animation: slide 10s infinite;
+  }
+  
+  .slider .slide:nth-child(1) {
+    background-image: url('bhopal_feat.jpg');
+    animation-delay: -0;
+  }
+  
+  .slider .slide:nth-child(2) {
+    background-image: url('bhopal_feat2.jpg');
+    animation-delay: -2s;
+  }
+    
+  .slider .slide:nth-child(3) {
+    background-image: url('bhopal_feat3.jpg');
+    animation-delay: -4s;
+  }
+    
+  .slider .slide:nth-child(4) {
+    background-image: url('agra_feat.jpg');
+    animation-delay: -6s;
+  }
+  
+  .slider .slide:nth-child(5) {
+    background-image: url('citadel.jpg');
+    animation-delay: -8s;
+  }
+  
+  @keyframes slide {
+    0%, 15%, 100% {
+      transform: translateX(0);
+      animation-timing-function: ease;
+    }
+    20% {
+      transform: translateX(-100%);
+      animation-timing-function: step-end;
+    }
+    95% {
+      transform: translateX(100%);
+      animation-timing-function: ease;
+    }
+  }
+      </style>
+        <section class="featured-destinations">
+            <h2>&nbsp;&nbsp;&nbsp;Featured Destinations</h2>
+            <div class="slider">
+              <div class="slide"></div>
+              <div class="slide"></div>
+              <div class="slide"></div>
+              <div class="slide"></div>
+              <div class="slide"></div>
+            <div>
+            <!-- Add featured destination cards here -->
+        </section>
+    
+        <footer>
+            <p>&copy; 2023 Trip Planner</p>
+        </footer>
+
+
+
+<!-- <h1>This is home page</h1>
+  
+        <li><a href="/register">Sign up!!</a></li>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/logout">Logout</a></li> -->
+
+
+
+        <!-- include bootstrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    </body>
+    
+</html>
+
+
+

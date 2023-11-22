@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Your head content -->
+    <style>
+        /* Add some basic CSS for styling the dropdown */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .search-box {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            overflow: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .option {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .option:hover {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+<body>
+    <div class="dropdown">
+        <input type="text" class="search-box" placeholder="Search options" id="myInput" oninput="filterOptions()">
+        <div class="dropdown-content" id="myDropdown">
+            <div class="option" data-value="option1">aOption 1</div>
+            <div class="option" data-value="option2">abOption 2</div>
+            <div class="option" data-value="option3">abcOption 3</div>
+            <div class="option" data-value="option4">abcdOption 4</div>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for the searchable dropdown
+        function filterOptions() {
+            var input, filter, dropdown, options, option, i;
+            input = document.getElementById("myInput");
+            filter = input.value.toLowerCase();
+            dropdown = document.getElementById("myDropdown");
+            options = dropdown.getElementsByClassName("option");
+
+            for (i = 0; i < options.length; i++) {
+                option = options[i];
+                if (option.innerText.toLowerCase().indexOf(filter) > -1) {
+                    option.style.display = "";
+                } else {
+                    option.style.display = "none";
+                }
+            }
+            dropdown.style.display = "block";
+        }
+
+        // Handle option selection
+        var options = document.querySelectorAll(".option");
+        for (var i = 0; i < options.length; i++) {
+            options[i].addEventListener("click", function() {
+                var selectedValue = this.getAttribute("data-value");
+                document.getElementById("myInput").value = selectedValue;
+                document.getElementById("myDropdown").style.display = "none";
+            });
+        }
+    </script>
+</body>
+</html>

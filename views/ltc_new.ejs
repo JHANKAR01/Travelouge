@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+    box-sizing: border-box;
+}
+body{
+    padding-top: 2rem;;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.flex{
+    display: flex;
+}
+.flex-col{
+    flex-direction: column;
+}
+.center{
+    justify-content: center;
+    align-items: center;
+}
+.heading{
+    font-size: 40px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.container{
+    width: 90vw;
+    padding: 0 2rem;
+}
+table,tr,td,th{
+    padding: 1rem 1rem;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+tr{
+    text-align: center;
+}
+table{
+    margin-bottom: 2rem;
+    width: 100%;
+}
+#info{
+    width: 100%;
+}
+.heading2{
+    font-size: 20px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-align: left;
+    width: 100%;
+    margin-top: 12px;
+}
+    </style>
+</head>
+<body>
+    
+    <div class="container flex flex-col center">
+        <div class="heading">Leave Travel Concession</div>
+        <div class="heading2">Validate PNR</div>
+        <form action="/submitkaro" method="POST">
+            <label for="pnr">Enter PNR</label>
+            <input type="text" id="pnr" name="pnr" required pattern="[A-Za-z0-9]{10}">
+            <button type="submit">Submit</button>
+        </form>
+        <div class="heading2">Details of User: </div>
+        <table id="info">
+            <tr>
+                <th>Name of the Applicant</th>
+                <!-- Name here -->
+            </tr>
+            <tr>
+                <th>Employee Code</th>
+                <!-- emp code here -->
+            </tr>
+            <tr>
+                <th>Date of Issuance:</th>
+                <!-- date of issuance here -->
+            </tr>
+            <tr>
+                <th>Number of travellers:</th>
+                <!-- number of travellers here -->
+            </tr>
+        </table>
+        <div class="heading2">Member Details: </div>
+        <table id="members">
+
+            <!-- Dynamically generate the passengers here -->
+
+
+            <tr>
+                <th>Sr No.</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Relation</th>
+            </tr>
+            <!-- <tr>
+                <td>1</td>
+                <td>Vinay Singh Chauhan</td>
+                <td>20</td>
+                <td>Self</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vinay Singh Chauhan</td>
+                <td>20</td>
+                <td>Self</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vinay Singh Chauhan</td>
+                <td>20</td>
+                <td>Self</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>Vinay Singh Chauhan</td>
+                <td>20</td>
+                <td>Self</td>
+            </tr> -->
+            
+        </table>
+        <div class="heading2">Travel Details </div>
+        <table id="bills">
+            <tr>
+                <th>Departure:Date and Place</th>
+                <th>Arrival:Date and Place</th>
+                <th>Distance(kms)</th>
+                <th>Mode of Travelled used</th>
+                <th>Class of Accomodation</th>
+                <th>No. of Fare</th>
+                <th>Fare Paid</th>
+                <th>Ticket Nos</th>
+                <th>PNR Nos</th>
+                <th>PNR Nos</th>
+            </tr>
+            <tr>
+                <td>12/07/12 Bhopal</td>
+                <td>13/07/12 Indore</td>
+                <td>200</td>
+                <td>Railway</td>
+                <td>1st</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>5</td>
+                <td>5</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>12/07/12 Bhopal</td>
+                <td>13/07/12 Indore</td>
+                <td>200</td>
+                <td>Railway</td>
+                <td>1st</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>5</td>
+                <td>5</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>12/07/12 Bhopal</td>
+                <td>13/07/12 Indore</td>
+                <td>200</td>
+                <td>Railway</td>
+                <td>1st</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>5</td>
+                <td>5</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>12/07/12 Bhopal</td>
+                <td>13/07/12 Indore</td>
+                <td>200</td>
+                <td>Railway</td>
+                <td>1st</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>5</td>
+                <td>5</td>
+                <td>N.A.</td>
+            </tr>
+            <tr>
+                <td>12/07/12 Bhopal</td>
+                <td>13/07/12 Indore</td>
+                <td>200</td>
+                <td>Railway</td>
+                <td>1st</td>
+                <td>1</td>
+                <td>1000</td>
+                <td>5</td>
+                <td>5</td>
+                <td>N.A.</td>
+            </tr>
+        </table>
+        <div class="button">
+            <button id="printltc">Print</button>
+        </div>
+    </div>
+    <script>
+        function downloadPdf(){
+    this.style.display='none'; 
+    window.print();
+     
+}
+const printButton=document.getElementById('printltc');
+printButton.addEventListener('click',downloadPdf);
+    </script>
+</body>
+</html>

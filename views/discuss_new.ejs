@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Forum</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .serila{
+      width:20vw;
+
+    }
+    .serila1{
+      width:60vw;
+    }
+    textarea{
+      margin-bottom: 2rem;
+    }
+    hr{
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Discussion</h1>
+  <!-- Add the search bar -->
+<div class="serila">
+    <h2>Search Messages by City</h2>
+    <form action="/search" method="GET">
+      <input type="text" name="searchCity" placeholder="Enter city name">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+  <hr>
+  <h2>Chat with the Community</h2>
+  <ul>
+    <% messages.forEach(message => { %>
+      <% if(message.user==user){ %>
+        <li><strong>You:</strong> <%= message.message %> (City: <%= message.city %>)</li>
+      <% } %>
+      <% if(message.user!=user){ %>
+        <li><strong><%= message.user %>:</strong> <%= message.message %> (City: <%= message.city %>)</li>
+      <% } %>
+    <% }); %>
+    </ul>
+  </div>
+  <div class="serila1">
+    <form action="/add-message" method="POST">
+      <input type="text" name="city" placeholder="Your city" required>
+      <textarea rows="4" name="message" placeholder="Type your message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <hr>
+  <div>
+</body>
+</html>
